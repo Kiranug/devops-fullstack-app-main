@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: Backend-Deployment
-        image: jubbuseacrinmh.azurecr.io/Backend-Deployment:__BUILD_ID__
+        image: jubbuseacrinmh.azurecr.io/__ENV__-backend:__BUILD_ID__
         ports:
         - containerPort: 3000
   
