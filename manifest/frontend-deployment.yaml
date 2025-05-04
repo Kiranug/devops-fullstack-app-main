@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: Frontend-Deployment
-        image: jubbuseacrinmh.azurecr.io/Frontend-Deployment:__BUILD_ID__
+        image: jubbuseacrinmh.azurecr.io/__ENV__-frontend:__BUILD_ID__
         ports:
         - containerPort: 3000
   
