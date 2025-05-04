@@ -37,6 +37,9 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}  # Must be JSON with clientId, clientSecret, subscriptionId, tenantId
           enable-AzPSSession: true
 
+      - name: ACR Login via Azure CLI
+        run: az acr login --name jubbuseacrinmh  # NOT the full login server; just the name
+
       - name: Build and push frontend image
         run: |
           docker build -t $ACR_NAME/${{ env.IMAGE_NAME }}-frontend:${{ github.run_number }} ./frontend
