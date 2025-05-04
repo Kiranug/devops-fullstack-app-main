@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Backend-Deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: Backend-app
+  template:
+    metadata:
+      labels:
+        app: Backend-app
+    spec:
+      containers:
+      - name: Backend-Deployment
+        image: jubbuseacrinmh.azurecr.io/Backend-Deployment:__BUILD_ID__
+        ports:
+        - containerPort: 3000
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Backend-app-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: Backend-app
