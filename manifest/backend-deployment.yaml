@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Backend-Deployment
+  name: backend-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: Backend-app
+      app: backend-app
   template:
     metadata:
       labels:
-        app: Backend-app
+        app: backend-app
     spec:
       containers:
       - name: Backend-Deployment
@@ -22,11 +22,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Backend-app-service
+  name: backend-app-service
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 3000
   selector:
-    app: Backend-app
+    app: backend-app
