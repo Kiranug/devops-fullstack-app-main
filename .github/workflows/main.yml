@@ -64,8 +64,8 @@ jobs:
 
       - name: Replace BUILD_ID and ENV in frontend deployment
         run: |
-          sed -i "s|__BUILD_ID__|${{ github.run_number }}|g" manifests/frontend-deployment.yaml
-          sed -i "s|__ENV__|${{ env.IMAGE_NAME }}|g" manifests/frontend-deployment.yaml
+          sed -i "s|__BUILD_ID__|${{ github.run_number }}|g" manifest/frontend-deployment.yaml
+          sed -i "s|__ENV__|${{ env.IMAGE_NAME }}|g" manifest/frontend-deployment.yaml
 
       - name: Log in to Azure using SPN credentials
         uses: azure/login@v2
@@ -80,7 +80,7 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
 
       - name: Deploy Frontend to AKS
-        run: kubectl apply -f manifests/frontend-deployment.yaml
+        run: kubectl apply -f manifest/frontend-deployment.yaml
 
   deploy-backend:
     runs-on: ubuntu-latest
@@ -96,8 +96,8 @@ jobs:
 
       - name: Replace BUILD_ID and ENV in backend deployment
         run: |
-          sed -i "s|__BUILD_ID__|${{ github.run_number }}|g" manifests/backend-deployment.yaml
-          sed -i "s|__ENV__|${{ env.IMAGE_NAME }}|g" manifests/backend-deployment.yaml
+          sed -i "s|__BUILD_ID__|${{ github.run_number }}|g" manifest/backend-deployment.yaml
+          sed -i "s|__ENV__|${{ env.IMAGE_NAME }}|g" manifest/backend-deployment.yaml
 
       - name: Set AKS context
         uses: azure/aks-set-context@v3
@@ -106,4 +106,4 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
 
       - name: Deploy Backend to AKS
-        run: kubectl apply -f manifests/backend-deployment.yaml
+        run: kubectl apply -f manifest/backend-deployment.yaml
