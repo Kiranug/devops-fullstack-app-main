@@ -59,7 +59,7 @@ func createDsn() string {
 	dbHost := "172.174.2.135"
 	dbUser := "myuser"
 	dbPassword := "mypassword"
-	dbName := "CREATEDB"
+	dbName := "myappdb"
 	dbPort := "5432"
 
 	dsnFormat := "host=%s user=%s password=%s dbname=%s port=%s sslmode=disable"
