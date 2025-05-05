@@ -4,6 +4,7 @@ import (
 	"employees/controller"
 	"employees/repository"
 	"employees/routes"
+	"employees/service" // ✅ Add this line
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -11,6 +12,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 )
+
 
 func main() {
 	app := fiber.New()
