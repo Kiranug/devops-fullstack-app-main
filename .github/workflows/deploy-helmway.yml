@@ -79,11 +79,11 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade --install fullstack-app ./helm-chart \
+          helm upgrade --install fullstack-app ./myapp \
             --namespace ${{ env.NAMESPACE }} \
             --create-namespace \
-            --values helm-chart/values.yaml \
-            --values helm-chart/values-${{ env.ENV }}.yaml \
+            --values myapp/values.yaml \
+            --values myapp/values-${{ env.ENV }}.yaml \
             --set frontend.image.repository=${{ env.ACR_NAME }}/${{ env.IMAGE_NAME }}-frontend \
             --set frontend.image.tag=${{ github.run_number }} \
             --set backend.image.repository=${{ env.ACR_NAME }}/${{ env.IMAGE_NAME }}-backend \
