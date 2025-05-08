@@ -1,0 +1,15 @@
+{{- range $app := list "frontend" "backend" }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.$app.name }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ .Values.$app.name }}
+  ports:
+    - port: 80
+      targetPort: {{ .Values.$app.containerPort }}
+---
+{{- end }}
+

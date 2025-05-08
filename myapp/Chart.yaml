@@ -1,0 +1,4 @@
+apiVersion: v2
+name: fullstack-app
+description: A Helm chart for Frontend + Backend
+version: 0.1.0

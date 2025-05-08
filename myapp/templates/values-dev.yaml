@@ -1,0 +1,10 @@
+frontend:
+  image:
+    tag: dev-1234  # Override in GitHub Action
+
+backend:
+  image:
+    tag: dev-1234  # Override in GitHub Action
+
+service:
+  type: LoadBalancer

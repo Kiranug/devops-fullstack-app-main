@@ -1,0 +1,13 @@
+frontend:
+  image:
+    repository: ""
+    tag: ""
+  containerPort: 3000
+  servicePort: 80
+
+backend:
+  image:
+    repository: ""
+    tag: ""
+  containerPort: 5000
+  servicePort: 80
