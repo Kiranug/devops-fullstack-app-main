@@ -82,8 +82,8 @@ jobs:
           helm upgrade --install fullstack-app ./myapp \
             --namespace ${{ env.NAMESPACE }} \
             --create-namespace \
-            --values myapp/values.yaml \
-            --values myapp/values-${{ env.ENV }}.yaml \
+            --values myapp/templates/values.yaml \
+            --values myapp/templates/values-${{ env.ENV }}.yaml \
             --set frontend.image.repository=${{ env.ACR_NAME }}/${{ env.IMAGE_NAME }}-frontend \
             --set frontend.image.tag=${{ github.run_number }} \
             --set backend.image.repository=${{ env.ACR_NAME }}/${{ env.IMAGE_NAME }}-backend \
