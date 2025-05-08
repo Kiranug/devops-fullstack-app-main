@@ -1,10 +1,13 @@
 frontend:
   image:
-    tag: dev-1234  # Override in GitHub Action
+    repository: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-frontend
+    tag: "123"  # Use GitHub Actions to dynamically replace this
+  containerPort: 3000
+  servicePort: 80
 
 backend:
   image:
-    tag: dev-1234  # Override in GitHub Action
-
-service:
-  type: LoadBalancer
+    repository: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-backend
+    tag: "123"
+  containerPort: 5000
+  servicePort: 80
