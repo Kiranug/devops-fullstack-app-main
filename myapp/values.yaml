@@ -1,13 +1,13 @@
 frontend:
   image:
-    repository: ""
-    tag: ""
+    repository: ""     # Override in env-specific files or via --set
+    tag: ""             # Override in env-specific files or via --set
   containerPort: 3000
   servicePort: 80
 
 backend:
   image:
-    repository: ""
-    tag: ""
+    repository: ""     # Override in env-specific files or via --set
+    tag: ""             # Override in env-specific files or via --set
   containerPort: 5000
   servicePort: 80
