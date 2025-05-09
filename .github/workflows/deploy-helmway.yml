@@ -91,6 +91,4 @@ jobs:
         run: |
           helm upgrade --install fullstack-app ./myapp \
             --set frontend.image=$ACR_NAME/frontend:${{ github.run_number }} \
-            --set backend.image=$ACR_NAME/backend:${{ github.run_number }} \
-            --namespace dev \
-            --create-namespace
+            --set backend.image=$ACR_NAME/backend:${{ github.run_number }} 
