@@ -17,3 +17,5 @@ spec:
           image: {{ .Values.backend.image }}
           ports:
             - containerPort: {{ .Values.backend.port }}
+          env:
+            {{- include "helpers.list-env-variables" . | nindent 8 }}

@@ -5,3 +5,14 @@ frontend:
 backend:
   image: myacr.azurecr.io/backend:latest
   port: 5000
+
+env:
+  normal:
+    APP_ENV: "development"
+    LOG_LEVEL: "debug"
+  secret:
+    DB_USERNAME: "demo"
+    DB_PASSWORD: "demo"
+    API_KEY: "demo"
+secret:
+  name: app-env-secret
