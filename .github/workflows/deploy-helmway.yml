@@ -90,6 +90,7 @@ jobs:
       - name: Deploy to AKS using Helm
         run: |
           helm upgrade --install fullstack-app ./myapp \
+            -f myapp/values-dev.yaml \
             --set frontend.image=$ACR_NAME/${{ env.IMAGE_NAME }}-frontend:${{ github.run_number }} \
             --set backend.image=$ACR_NAME/${{ env.IMAGE_NAME }}-backend:${{ github.run_number }} \
             --namespace ${{ env.NAMESPACE }} \
