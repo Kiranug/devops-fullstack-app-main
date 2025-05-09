@@ -1,13 +1,13 @@
 frontend:
   image:
-    repository: ""     # Override in env-specific files or via --set
-    tag: ""             # Override in env-specific files or via --set
+    repository: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-frontend
+    tag: latest
   containerPort: 3000
   servicePort: 80
 
 backend:
   image:
-    repository: ""     # Override in env-specific files or via --set
-    tag: ""             # Override in env-specific files or via --set
+    repository: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-backend
+    tag: latest
   containerPort: 5000
   servicePort: 80
