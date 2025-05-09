@@ -1,21 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: {{ .Release.Name }}-backend
+  labels:
+    app: {{ .Release.Name }}-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: {{ .Release.Name }}-backend
   template:
     metadata:
       labels:
-        app: backend
+        app: {{ .Release.Name }}-backend
     spec:
       containers:
-        - name: backend
+        - name: backend  # Container name, not environment variable
           image: {{ .Values.backend.image }}
           ports:
-            - containerPort: {{ .Values.backend.port }}
+            - containerPort: 5000
           env:
-            {{- include "helpers.list-env-variables" . | nindent 8 }}
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.name }}
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.name }}
+                  key: DB_PASSWORD
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.name }}
+                  key: API_KEY
+            - name: APP_ENV
+              value: {{ .Values.env.normal.APP_ENV }}  # Non-sensitive env variables
+            - name: LOG_LEVEL
+              value: {{ .Values.env.normal.LOG_LEVEL }}  # Non-sensitive env variables
