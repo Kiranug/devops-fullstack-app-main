@@ -1,0 +1,7 @@
+frontend:
+  image: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-frontend:25
+  port: 80
+
+backend:
+  image: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-backend:25
+  port: 5000

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "myapp.fullname" . }}-frontend
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "myapp.name" . }}-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: {{ include "myapp.name" . }}-frontend
+        app: frontend
     spec:
       containers:
         - name: frontend
-          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+          image: {{ .Values.frontend.image }}
           ports:
-            - containerPort: {{ .Values.frontend.containerPort }}
+            - containerPort: {{ .Values.frontend.port }}

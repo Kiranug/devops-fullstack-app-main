@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "myapp.fullname" . }}-backend
+  name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "myapp.name" . }}-backend
+      app: backend
   template:
     metadata:
       labels:
-        app: {{ include "myapp.name" . }}-backend
+        app: backend
     spec:
       containers:
         - name: backend
-          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          image: {{ .Values.backend.image }}
           ports:
-            - containerPort: {{ .Values.backend.containerPort }}
+            - containerPort: {{ .Values.backend.port }}
