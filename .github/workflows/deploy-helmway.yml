@@ -87,8 +87,10 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      - name: Deploy with Helm
+      - name: Deploy to AKS using Helm
         run: |
           helm upgrade --install fullstack-app ./myapp \
-            --set frontend.image=$ACR_NAME/frontend:${{ github.run_number }} \
-            --set backend.image=$ACR_NAME/backend:${{ github.run_number }} 
+            --set frontend.image=$ACR_NAME/${{ env.IMAGE_NAME }}-frontend:${{ github.run_number }} \
+            --set backend.image=$ACR_NAME/${{ env.IMAGE_NAME }}-backend:${{ github.run_number }} \
+            --namespace ${{ env.NAMESPACE }} \
+            --create-namespace
