@@ -73,20 +73,24 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+      
+      - name: Generate values file for Helm
+        run: |
+          echo "frontend:" > myapp/values-${{ env.ENV }}.yaml
+          echo "  image: $ACR_NAME/${IMAGE_NAME}-frontend:${{ github.run_number }}" >> myapp/values-${{ env.ENV }}.yaml
+          echo "  port: 80" >> myapp/values-${{ env.ENV }}.yaml
+          echo "backend:" >> myapp/values-${{ env.ENV }}.yaml
+          echo "  image: $ACR_NAME/${IMAGE_NAME}-backend:${{ github.run_number }}" >> myapp/values-${{ env.ENV }}.yaml
+          echo "  port: 5000" >> myapp/values-${{ env.ENV }}.yaml
+        
 
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      - name: Generate values file for Helm
-        run: |
-          cat <<EOF > myapp/values-${{ env.ENV }}.yaml
-          frontend:
-            image: $ACR_NAME/${{ env.IMAGE_NAME }}-frontend:${{ github.run_number }}
-            port: 80
-          backend:
-            image: $ACR_NAME/${{ env.IMAGE_NAME }}-backend:${{ github.run_number }}
-            port: 5000
-          EOF
       - name: Deploy with Helm
         run: |
-          helm upgrade --install fullstack-app ./myapp -f myapp/values-${{ env.ENV }}.yaml --namespace ${{ env.NAMESPACE }} --create-namespace
+          helm upgrade --install fullstack-app ./myapp \
+            --set frontend.image=$ACR_NAME/frontend:${{ github.run_number }} \
+            --set backend.image=$ACR_NAME/backend:${{ github.run_number }} \
+            --namespace dev \
+            --create-namespace

@@ -1,7 +1,7 @@
 frontend:
-  image: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-frontend:25
+  image: $ACR_NAME/frontend:${{ github.run_number }}
   port: 80
 
 backend:
-  image: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-backend:25
+  image: $ACR_NAME/backend:${{ github.run_number }}
   port: 5000
