@@ -1,0 +1,15 @@
+frontend:
+  image:
+    repository: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-frontend
+    tag: latest  # or use a dynamic tag like {{ .Values.buildId }} if templated in GitHub Actions
+  service:
+    type: ClusterIP
+    port: 80
+
+backend:
+  image:
+    repository: jubbuseacrinmh.azurecr.io/aks-demo-app-dev-backend
+    tag: latest  # or use a dynamic tag like {{ .Values.buildId }}
+  service:
+    type: ClusterIP
+    port: 5000
