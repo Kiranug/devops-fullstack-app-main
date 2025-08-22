@@ -14,9 +14,9 @@ on:
           - prod
 
 env:
-  ACR_NAME: jubbuseacrinmh.azurecr.io
-  RESOURCE_GROUP: verito-aks-rg
-  CLUSTER_NAME: verito-aks-cluster
+  ACR_NAME: devacrregistry8956.azurecr.io
+  RESOURCE_GROUP: dev-resource-group
+  CLUSTER_NAME: basic-aks
   NAMESPACE: default
 
 jobs:
