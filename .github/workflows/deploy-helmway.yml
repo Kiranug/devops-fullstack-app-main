@@ -38,7 +38,7 @@ jobs:
           enable-AzPSSession: true
 
       - name: ACR Login
-        run: az acr login --name jubbuseacrinmh
+        run: az acr login --name devacrregistry8956
 
       - name: Build and push frontend image
         run: |
