@@ -14,9 +14,9 @@ on:
           - prod
 
 env:
-  ACR_NAME: jubbuseacrinmh.azurecr.io   # Replace with your ACR login server
-  RESOURCE_GROUP: verito-aks-rg
-  CLUSTER_NAME: verito-aks-cluster
+  ACR_NAME: devacrregistry8956.azurecr.io
+  RESOURCE_GROUP: dev-resource-group
+  CLUSTER_NAME: basic-aks
   NAMESPACE: default
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
           enable-AzPSSession: true
 
       - name: ACR Login via Azure CLI
-        run: az acr login --name jubbuseacrinmh  # NOT the full login server; just the name
+        run: az acr login --name devacrregistry8956  # NOT the full login server; just the name
 
       - name: Build and push frontend image
         run: |
